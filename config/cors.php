@@ -15,15 +15,17 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'auth/*'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'https://tiendamaquimotora.enfocussoluciones.pe',
-        'https://admintiendamaquimotora.enfocussoluciones.pe',
-        'http://localhost:5000',
-        'http://localhost:4200'
+        'https://tiendamaquimotora.enfocussoluciones.com',
+        'https://www.tiendamaquimotora.enfocussoluciones.com',
+        'https://admintiendamaquimotora.enfocussoluciones.com',
+        'https://www.admintiendamaquimotora.enfocussoluciones.com',
+        'http://localhost:4200',
+        'http://localhost:4300'
     ],
 
     'allowed_origins_patterns' => [],
