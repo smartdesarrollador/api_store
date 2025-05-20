@@ -18,5 +18,43 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $this->call([
+            // Primero los seeders principales
+            UsersSeeder::class,
+            BrandsSeeder::class,
+            AttributesSeeder::class,
+            PropertiesSeeder::class,
+            CategoriesSeeder::class,
+            
+            // Después los seeders que dependen de los anteriores
+            SlidersSeeder::class,
+            ProductsSeeder::class,
+            ProductSpecificationsSeeder::class,
+            ProductVariationsSeeder::class,
+            
+            // Cupones y descuentos
+            CuponesSeeder::class,
+            DiscountsSeeder::class,
+            
+            // Relaciones de cupones y descuentos
+            CuponeCategoriesSeeder::class,
+            CuponeBrandsSeeder::class,
+            CuponeProductsSeeder::class,
+            DiscountCategoriesSeeder::class,
+            DiscountBrandsSeeder::class,
+            DiscountProductsSeeder::class,
+            
+            // Usuarios y direcciones
+            UserAddressSeeder::class,
+            
+            // Carritos, reseñas y ventas
+            CartsSeeder::class,
+            SaleTempsSeeder::class,
+            SaleSeeder::class,
+            SalesAddressSeeder::class,
+            SaleDetailsSeeder::class,
+            ReviewsSeeder::class,
+        ]);
     }
 }

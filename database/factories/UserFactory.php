@@ -12,11 +12,6 @@ use Illuminate\Support\Str;
 class UserFactory extends Factory
 {
     /**
-     * The current password being used by the factory.
-     */
-    protected static ?string $password;
-
-    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -24,10 +19,19 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->firstName(),
+            'surname' => fake()->lastName(),
+            'phone' => fake()->numerify('9########'),
+            'uniqd' => 'user_' . Str::random(6),
+            'avatar' => null,
+            'fb' => null,
+            'address_city' => fake()->city(),
+            'bio' => fake()->paragraph(),
+            'sexo' => fake()->randomElement(['M', 'F']),
             'email' => fake()->unique()->safeEmail(),
+            'type_user' => 2, // Por defecto, clientes
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => Hash::make('password123'), // password
             'remember_token' => Str::random(10),
         ];
     }
@@ -39,6 +43,16 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Indicate that the user is an administrator.
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'type_user' => 1,
         ]);
     }
 }
