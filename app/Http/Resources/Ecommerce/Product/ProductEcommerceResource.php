@@ -92,9 +92,15 @@ class ProductEcommerceResource extends JsonResource
                 })
             ]);
         }
+        
         $tags_parse = [];
-        foreach (($this->resource->tags ? json_decode($this->resource->tags,true) : []) as $key => $tag) {
-            array_push($tags_parse,$tag["item_text"]);
+        $tags = $this->resource->tags ? json_decode($this->resource->tags, true) : [];
+        if (is_array($tags)) {
+            foreach ($tags as $tag) {
+                if (is_array($tag) && isset($tag['item_text'])) {
+                    array_push($tags_parse, $tag['item_text']);
+                }
+            }
         }
 
         return [

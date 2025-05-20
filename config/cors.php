@@ -25,7 +25,8 @@ return [
         'https://admintiendamaquimotora.enfocussoluciones.com',
         'https://www.admintiendamaquimotora.enfocussoluciones.com',
         'http://localhost:4200',
-        'http://localhost:4300'
+        'http://localhost:4300',
+        'http://localhost:5000'
     ],
 
     'allowed_origins_patterns' => [],
